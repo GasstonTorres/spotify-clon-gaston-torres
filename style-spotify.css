@@ -1,0 +1,691 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+    text-decoration: none;
+    list-style: none;
+}
+
+html {
+    height: 100vh;
+}
+
+body {
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    width: 100%;
+    height: 640px;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 70px 1fr 90px;
+    grid-template-areas:
+        "nav-bar top-bar"
+        "nav-bar main-view"
+        "now-playing-bar now-playing-bar"
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: none;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgb(59, 59, 59);
+}
+
+.areas {
+    background-color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+.main-view {
+    grid-area: main-view;
+}
+
+.main-view::-webkit-scrollbar {
+    width: 15px;
+}
+
+.main-view::-webkit-scrollbar-track {
+    background-color: none;
+}
+
+.main-view::-webkit-scrollbar-thumb {
+    background: rgb(59, 59, 59);
+}
+
+
+.nav-bar {
+    grid-area: nav-bar;
+    padding-left: 10px;
+
+}
+
+.nav-bar-area {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 10px;
+}
+
+.spotify-logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.nav-bar-area-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-bar-list-favourites {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-bar span {
+    margin-left: 10px;
+}
+
+.playlist-list {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    position: relative;
+    left: 10px;
+}
+
+.playlist-list::-webkit-scrollbar {
+    width: 15px;
+}
+
+.playlist-list::-webkit-scrollbar-track {
+    background-color: none;
+}
+
+.playlist-list::-webkit-scrollbar-thumb {
+    background: rgb(59, 59, 59);
+}
+
+.playlist-list-n div {
+    width: 100%;
+    height: 40px;
+}
+
+/*-------------------------------*/
+
+.top-bar {
+    grid-area: top-bar;
+}
+
+.now-playing-bar {
+    grid-area: now-playing-bar;
+    min-width: 1000px;
+}
+
+.inicio-home {
+    width: 100%;
+}
+
+/*------------*/
+
+.main-view {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.main-container-listened {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 80px 80px;
+    min-width: 600px;
+    gap: 20px;
+    row-gap: 20px;
+    padding: 30px;
+}
+
+.saludo h3 {
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+@media (max-width:1000px) {
+    .main-container-listened {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 80px 80px 80px;
+        gap: 20px;
+        row-gap: 20px;
+        padding: 30px;
+    }
+}
+
+
+
+.main-container-listened a {
+    display: block;
+    min-width: 100%;
+}
+
+.listened-band {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(39, 39, 39);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-radius: 5px;
+}
+
+
+.listened-band:hover {
+    background-color: rgb(55, 55, 55);
+    transition: 0.5s;
+}
+
+.listened-band-cover {
+    height: 100%;
+    width: 80px;
+    min-width: 80px;
+    box-shadow: 19px 0px 41px -17px rgba(0, 0, 0, 0.91);
+    -webkit-box-shadow: 19px 0px 41px -17px rgba(0, 0, 0, 0.91);
+    -moz-box-shadow: 19px 0px 41px -17px rgba(0, 0, 0, 0.91);
+    border-radius: 5px;
+}
+
+.listened-band-name {
+    font-weight: bold;
+    font-size: 14px;
+    margin: auto 0;
+}
+
+
+.cover-1 {
+    background-image: url(img/band-covers/twenty-one-pilots.jfif);
+    background-size: contain;
+}
+
+.cover-2 {
+    background-image: url(img/band-covers/foo-fighters.jfif);
+    background-size: contain;
+}
+
+.cover-3 {
+    background-image: url(img/band-covers/fitz-and-the.jfif);
+    background-size: contain;
+}
+
+.cover-4 {
+    background-image: url(img/band-covers/love-fury-spaghetti.jpg);
+    background-size: contain;
+}
+
+.cover-5 {
+    background-image: url(img/band-covers/muse.jpg);
+    background-size: contain;
+}
+
+.cover-6 {
+    background-image: url(img/band-covers/am.jfif);
+    background-size: contain;
+}
+
+.listened-band-name {
+    width: calc(100%-80px);
+}
+
+/*Play again*/
+
+.play-again {
+    width: 100%;
+    padding: 0 30px;
+    min-width: 600px
+}
+
+.play-again-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.play-again-title h4 {
+    font-size: 20px;
+}
+
+.play-again-title span {
+    font-weight: bold;
+}
+
+.play-again-cards-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 25px;
+    padding-bottom: 30px;
+    margin-top: 30px;
+    grid-template-areas:
+        "card-1 card-2 card-3 card-4 card-5";
+}
+
+.card-1 {
+    grid-area: card-1;
+}
+
+.card-2 {
+    grid-area: card-2;
+}
+
+.card-3 {
+    grid-area: card-3;
+}
+
+.card-4 {
+    grid-area: card-4;
+}
+
+.card-5 {
+    grid-area: card-5;
+}
+
+@media (max-width:1350px) {
+
+    .play-again-cards-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 100%;
+        grid-template-areas:
+            "card-1 card-2 card-3 card-4";
+        justify-content: stretch;
+    }
+
+    .card-5 {
+        display: none;
+    }
+}
+
+@media (max-width:1150px) {
+
+    .play-again-cards-container {
+        grid-template-columns: 1fr 1fr 1fr;
+        width: 100%;
+        grid-template-areas:
+            "card-1 card-2 card-3";
+        justify-content: stretch;
+    }
+
+    .card-4 {
+        display: none;
+    }
+
+}
+
+.play-again-card {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.play-again-card:hover {
+    background-color: rgb(37, 37, 37);
+    transition: 0.1s;
+}
+
+.card-band-cover {
+    box-shadow: 33px 26px 38px -30px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 33px 26px 38px -30px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 33px 26px 38px -30px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+}
+
+
+.card-1 .card-band-cover {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/band-covers/twenty-one-pilots.jfif);
+    background-size: cover;
+}
+
+.card-2 .card-band-cover {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/band-covers/foo-fighters.jfif);
+    background-size: cover;
+}
+
+.card-3 .card-band-cover {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/band-covers/twodoor.jpg);
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.card-4 .card-band-cover {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/band-covers/foster.jpg);
+    background-size: cover;
+}
+
+.card-5 .card-band-cover {
+    width: 100%;
+    height: 100%;
+    background-image: url(img/band-covers/muse-2.png);
+    background-size: cover;
+}
+
+
+
+/*MANTIENE EL ASPECT-RATIO DE LA IMAGEN*/
+
+.card-band-cover::after {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+/*MANTIENE EL ASPECT-RATIO DE LA IMAGEN*/
+
+.card-title-description {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.card-title {
+    height: 20px;
+
+}
+
+.card-title h5 {
+    font-size: 14px;
+    width: 100%;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 160px
+}
+
+.card-title-description {
+    height: 50px;
+    font-size: 14px;
+}
+
+
+
+/* BUTTONS TOP */
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(26, 51, 0, 1) 100%);
+    background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(26, 51, 0, 1) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(26, 51, 0, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#1a3300", GradientType=1);
+
+}
+
+.buttons-back-forth {
+    display: flex;
+    margin-left: 30px;
+    gap: 20px;
+}
+
+.button-back button,
+.button-forth button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(34, 34, 34);
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+.login-user {
+    background-color: rgb(12, 12, 12);
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 30px;
+    border-radius: 50px;
+    gap: 10px;
+}
+
+.login-user-image {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-image: url(img/fotoperfil.jpg);
+    background-size: cover;
+}
+
+.login-button {
+    color: aliceblue;
+    width: 30px;
+    height: 100%;
+}
+
+.login-button button {
+    width: 30px;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #000;
+    inset-inline: 2px solid grey;
+}
+
+.login-button button i {
+    color: rgb(248, 248, 248);
+
+}
+
+/*_____________*/
+
+.now-playing {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: auto 30px;
+}
+
+.now-playing-description {
+    display: grid;
+    width: 20%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 25px 25px;
+    grid-template-areas:
+        "now-cover now-title now-title"
+        "now-cover now-artist now-artist";
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    padding-left: 20px;
+    min-width: 300px;
+    column-gap: 20px;
+}
+
+.now-playing-description-cover {
+    grid-area: now-cover;
+    width: 60px;
+    height: 60px;
+    background-image: url(img/band-covers/twenty-one-pilots.jfif);
+    background-size: cover;
+
+}
+
+.now-playing-description-title {
+    grid-area: now-title;
+    width: 100%;
+    height: 100%;
+    margin: auto 0;
+
+
+}
+
+.now-playing-description-artist {
+    grid-area: now-artist;
+    width: 100%;
+    height: 100%;
+    margin: auto 0;
+    font-size: 12px;
+    font-weight: 300;
+
+}
+
+.now-playing-description-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.now-playing-bar-play {
+    width: 50%;
+    min-width: 400px;
+    height: 100%;
+}
+
+.favourite-button {
+    padding-right: 20px;
+}
+
+.favourite-button i {
+    color: #1ed760;
+}
+
+/*----------------*/
+
+.now-playing-setting {
+    width: 30%;
+    height: 100%;
+}
+
+.now-playing-bar-play {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.audio-controls div button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    font-size: 16px;
+}
+
+.shuffle-button i,
+.repeat-button i {
+    color: rgb(78, 78, 78);
+}
+
+.backwards-button i,
+.forwards-button i {
+    color: rgb(95, 95, 95);
+    font-size: 18px;
+}
+
+.audio-controls div .play-pause-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+}
+
+.audio-controls div .play-pause-button i {
+    padding-left: 3px;
+    color: #000;
+    font-size: 16px;
+}
+
+.audio-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.audio-bar-bar {
+    height: 3px;
+    width: 70%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+
+.now-playing-setting {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    gap: 20px;
+    height: 100%;
+    min-width: 80px
+}
+
+.button-lyrics,
+.button-queue,
+.connect-devices,
+.volume-control {
+    background: none;
+    border: none;
+}
+
+.now-playing-setting i {
+    color: rgb(190, 190, 190);
+    font-size: 16px;
+}
+
+.volume-control-bar {
+    width: 60px;
+    height: 3px;
+    background-color: rgb(190, 190, 190);
+}
+
+.volume-control-setting {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 10px;
+}
